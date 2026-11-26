@@ -68,8 +68,8 @@ a{color:inherit}
 .btn.light,.hero .btn{background:var(--seed);color:var(--fig)}
 .hero .btn:hover{background:var(--paper)}
 .btn.light:hover{background:var(--paper)}
-.hero-art{position:relative;width:100%;max-width:440px;justify-self:end;padding:0 0 0 1.5rem}
-.hero-art img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:50% 35%;border-radius:28px;box-shadow:0 34px 70px -28px rgba(0,0,0,.65)}
+.hero-art{position:relative;width:100%;max-width:470px;justify-self:end}
+.hero-art img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:28px;box-shadow:0 34px 70px -28px rgba(0,0,0,.65)}
 .hero-art .emblem{position:absolute;left:-1.5rem;bottom:-2.5rem;width:clamp(110px,14vw,170px);height:auto;overflow:visible;filter:drop-shadow(0 12px 18px rgba(14,39,68,.35))}
 
 /* the tree grows in once on load: the page's one moment of motion */
@@ -81,7 +81,24 @@ a{color:inherit}
 .mission{background:var(--paper);color:var(--ink);padding:clamp(4rem,9vw,7.5rem) 0}
 .mission .wrap{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(2rem,6vw,6rem);align-items:center}
 .mission h2{font-family:var(--display);font-weight:700;font-size:clamp(2rem,3.6vw,3rem);line-height:1.02;letter-spacing:-.03em;margin:0 0 1.2rem;color:var(--fig)}
-.logo-full{display:block;width:100%;max-width:460px;height:auto;border-radius:22px;box-shadow:0 24px 50px -24px rgba(14,39,68,.55)}
+.founders{margin:0;max-width:440px}
+.founders img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%;border-radius:22px;box-shadow:0 24px 50px -24px rgba(14,39,68,.55)}
+.founders figcaption{margin-top:1rem;font-size:1.02rem;line-height:1.45;color:var(--muted)}
+.founders strong{display:block;font-family:var(--display);font-weight:680;font-size:1.2rem;color:var(--fig);margin-bottom:.15rem}
+.mission-label{font-family:var(--display);font-weight:650;font-size:1.15rem;color:var(--pulp);margin:0 0 .6rem}
+/* app shortcuts */
+.applinks{padding:0 0 clamp(1rem,3vw,2rem)}
+.applinks h2{font-family:var(--display);font-weight:720;font-size:clamp(1.5rem,2.6vw,2rem);letter-spacing:-.03em;color:var(--fig);margin:0 0 1.2rem}
+.applinks ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.1rem}
+.applinks a{display:flex;align-items:center;gap:1rem;text-decoration:none;color:var(--paper);border-radius:20px;padding:1.1rem 1.3rem;min-height:92px}
+.applinks a:hover{filter:brightness(1.12)}
+.applinks .a-clyde{background:linear-gradient(135deg,var(--fig),#1D4C84)}
+.applinks .a-rlm{background:#050811}
+.applinks .badge{flex:none;width:58px;height:58px;border-radius:14px;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:1.05rem;background:var(--seed);color:var(--fig)}
+.applinks .a-rlm .badge{background:linear-gradient(120deg,#E5484D,#F2B233 45%,#3E63DD);color:#fff}
+.applinks .name{display:block;font-family:var(--display);font-weight:720;font-size:1.3rem;line-height:1.1}
+.applinks .what{display:block;font-size:.98rem;color:rgba(246,247,244,.82)}
+.applinks .go{margin-left:auto;font-family:var(--display);font-weight:650;font-size:.98rem;color:var(--seed);white-space:nowrap}
 .mission blockquote{margin:0;font-size:clamp(1.35rem,2.3vw,1.8rem);line-height:1.45;max-width:36ch;font-weight:380}
 .mission .terms{margin-top:2.5rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem;border-top:1px solid rgba(14,39,68,.18);padding-top:1.75rem}
 .mission .terms div{font-size:1rem;line-height:1.45;color:var(--muted)}
@@ -233,10 +250,11 @@ p.email{margin:0 0 1rem}
   .benefits{grid-template-columns:1fr}
   .partner{flex-direction:column;align-items:flex-start}
   .hero-art{order:-1;max-width:none;justify-self:stretch;padding:0;margin-bottom:1.5rem}
-  .hero-art img{aspect-ratio:4/5;object-position:50% 30%}
+  .hero-art{max-width:340px;justify-self:start}
   .hero-art .emblem{left:auto;right:-.5rem;bottom:-2rem;width:104px}
-  .hero{--glow:60% 34%;--gsize:95% 30%}
-  .logo-full{max-width:320px}
+  .hero{--glow:45% 26%;--gsize:95% 30%}
+  .founders{max-width:360px}
+  .applinks ul{grid-template-columns:1fr}
   .gallery{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:78%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:.5rem}
   .gallery figure{scroll-snap-align:start}
   .gallery .wide{grid-column:auto}
@@ -263,6 +281,7 @@ p.email{margin:0 0 1rem}
       Fruition
     </a>
     <nav aria-label="Main">
+      <a href="#about">About</a>
       <a href="#work">Our work</a>
       <a href="#film">Film and music</a>
       <a href="#podcasts">Podcasts</a>
@@ -284,17 +303,23 @@ p.email{margin:0 0 1rem}
         <a class="btn" href="#get-in-touch" data-topic="Working with Fruition">Tell us about your business</a>
       </div>
       <div class="hero-art">
-        <img src="img/profile-capitol.webp" width="1050" height="1400" alt="Delarkin and Jade Foster walking hand in hand in Washington, D.C., with the U.S. Capitol behind them">
-        <img class="emblem" src="img/tree-emblem.webp" width="480" height="480" alt="">
+        <img src="img/fruition-logo.webp" width="1254" height="1254" alt="Fruition Charitable Arts Foundation and Services logo: an orange tree with a ladder up its trunk, under the words Making Your Dreams a Reality">
       </div>
     </div>
   </section>
 
-  <section class="mission" aria-labelledby="mission-h">
+  <section class="mission" id="about" aria-labelledby="about-h">
     <div class="wrap">
-      <img class="logo-full" src="img/fruition-logo.webp" width="1254" height="1254" alt="Fruition Charitable Arts Foundation and Services logo: an orange tree with a ladder up its trunk, under the words Making Your Dreams a Reality">
+      <figure class="founders">
+        <img src="img/profile-capitol.webp" width="1050" height="1400" alt="Delarkin and Jade Foster walking hand in hand in Washington, D.C., with the U.S. Capitol behind them">
+        <figcaption>
+          <strong>Our founders</strong>
+          J. DeLarkin Foster, Co-Founder and Executive Director, and Jade Foster, Co-Founder.
+        </figcaption>
+      </figure>
       <div>
-        <h2 id="mission-h">Our mission</h2>
+        <h2 id="about-h">About us</h2>
+        <h3 class="mission-label">Our mission</h3>
         <blockquote>
           Offering creative marketing solutions on a sliding scale. We help small businesses increase their exposure through use of the arts, providing low cost solutions that utilize both traditional and creative marketing means and production, in order to raise brand awareness and assist in meeting the targeted business goals of our clients.
         </blockquote>
@@ -304,6 +329,16 @@ p.email{margin:0 0 1rem}
           <div><strong>Your goals</strong>The work is aimed at the targets your business sets.</div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="applinks" id="our-apps" aria-labelledby="applinks-h">
+    <div class="wrap">
+      <h2 id="applinks-h">Go straight to our apps</h2>
+      <ul>
+        <li><a class="a-clyde" href="https://askclyde.us" target="_blank" rel="noopener"><span class="badge" aria-hidden="true">C</span><span><span class="name">Clyde</span><span class="what">Free history app</span></span><span class="go">Open Clyde</span></a></li>
+        <li><a class="a-rlm" href="https://relatablelearningmodel.com/app" target="_blank" rel="noopener"><span class="badge" aria-hidden="true">RLM</span><span><span class="name">RLM</span><span class="what">The Relatable Learning Model</span></span><span class="go">Open RLM</span></a></li>
+      </ul>
     </div>
   </section>
 
