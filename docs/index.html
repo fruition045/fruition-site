@@ -55,21 +55,26 @@ a{color:inherit}
 
 /* hero: a statement in large type beside a moving wall of the work */
 .hero{position:relative;color:var(--paper);background:#0A1C33;overflow:hidden}
-.hero .wrap{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(2rem,5vw,5rem);align-items:center;min-height:calc(100vh - 64px - 3.4rem);min-height:calc(100svh - 64px - 3.4rem)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2rem,5vw,5rem);align-items:center;min-height:calc(100vh - 64px - 3.4rem);min-height:calc(100svh - 64px - 3.4rem)}
 .hero-text{padding:clamp(2.5rem,6vw,5rem) 0}
 .hero-org{font-family:var(--display);font-weight:600;font-size:1rem;color:var(--seed);margin:0 0 1.6rem}
 .hero h1{font-family:var(--display);font-weight:800;font-size:clamp(3.3rem,8.6vw,8.2rem);line-height:.9;letter-spacing:-.05em;color:var(--paper);margin:0 0 2rem}
-.hero h1 span{display:block;animation:rise .8s cubic-bezier(.2,.75,.2,1) both}
-.hero h1 span:nth-child(2){animation-delay:.12s}
-.hero h1 span:nth-child(3){animation-delay:.24s}
-@keyframes rise{from{opacity:0;transform:translateY(.45em)}to{opacity:1;transform:none}}
+.hero h1 span{display:block;animation:rise 1s cubic-bezier(.2,.75,.2,1) both,lit 7.5s ease-in-out 1.6s infinite}
+.hero h1 span:nth-child(2){animation-delay:.22s,4.1s}
+.hero h1 span:nth-child(3){animation-delay:.44s,6.6s}
+@keyframes lit{0%,24%,100%{color:var(--paper);transform:none}8%,16%{color:var(--seed);transform:translateX(.08em)}}
+@keyframes rise{from{opacity:0;transform:translateY(.9em) skewY(4deg)}to{opacity:1;transform:none}}
 .hero-lede{font-size:clamp(1.15rem,1.6vw,1.4rem);line-height:1.5;max-width:40ch;margin:0 0 2.2rem;color:rgba(246,247,244,.88)}
 .hero-actions{display:flex;flex-wrap:wrap;gap:.8rem}
 .hero .btn.outline{background:transparent;color:var(--paper);box-shadow:inset 0 0 0 2px rgba(246,247,244,.7)}
 .hero .btn.outline:hover{background:var(--paper);color:var(--fig)}
-.hero-wall{align-self:stretch;perspective:1300px;height:calc(100vh - 64px - 3.4rem);height:calc(100svh - 64px - 3.4rem);min-height:520px;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent)}
-.wall-plane{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;height:100%;transform-origin:50% 50%;transform:rotateX(calc(9deg - var(--py,0)*10deg)) rotateY(calc(-17deg + var(--px,0)*14deg)) rotateZ(3deg) scale(1.22);will-change:transform}
+.hero-wall{align-self:stretch;perspective:1300px;margin-right:calc((min(1160px,100vw - 3rem) - 100vw)/2);height:calc(100vh - 64px - 3.4rem);height:calc(100svh - 64px - 3.4rem);min-height:520px;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent)}
+.wall-plane{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;height:124%;margin-top:-12%;transform-origin:50% 50%;transform:rotateX(calc(9deg - var(--py,0)*10deg)) rotateY(calc(-17deg + var(--px,0)*14deg)) rotateZ(3deg) scale(1.22);will-change:transform}
+.hero-wall .col{overflow:hidden;height:100%;min-height:0}
 .hero-wall .col:nth-child(3) .track{animation-duration:66s}
+.hero-wall .c4{display:none}
+.hero-wall .c4 .track{animation-duration:52s;animation-direction:reverse}
+@media (min-width:1500px){.wall-plane{grid-template-columns:repeat(4,minmax(0,1fr))}.hero-wall .c4{display:block}}
 .hero-wall .track{display:flex;flex-direction:column;gap:14px;animation:drift 48s linear infinite}
 .hero-wall .col:nth-child(2) .track{animation-direction:reverse;animation-duration:58s}
 .hero-wall img{display:block;width:100%;height:auto;border-radius:16px}
@@ -139,7 +144,7 @@ a{color:inherit}
 .partner h3{font-family:var(--display);font-weight:720;font-size:1.6rem;letter-spacing:-.02em;margin:0;color:var(--paper)}
 .partner .role{font-style:italic;color:var(--seed);margin:.15rem 0 .5rem}
 .partner p{max-width:62ch}
-.partner p:last-child{margin:0}
+.partner p:last-of-type{margin:0 0 1.1rem}
 .hemp .source{grid-column:1/-1;font-size:.88rem;color:rgba(246,247,244,.7);margin:0;max-width:none}
 
 /* featured project */
@@ -255,9 +260,9 @@ p.email{margin:0 0 1rem}
 /* rlm light */
 .rlm-logo{position:relative;overflow:hidden;border-radius:14px}
 .rlm-logo::after{content:"";position:absolute;inset:-20% auto -20% 0;width:38%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.34) 45%,rgba(255,255,255,.5) 50%,rgba(255,255,255,.34) 55%,transparent);mix-blend-mode:overlay;transform:translateX(-140%) skewX(-12deg);animation:sheen 4.8s cubic-bezier(.6,0,.3,1) infinite}
-.rlm-flare{position:absolute;top:64%;left:50%;width:34%;aspect-ratio:8/1;transform:translate(-50%,-50%);background:radial-gradient(ellipse at center,rgba(255,255,255,.95) 0,rgba(150,200,255,.55) 22%,rgba(120,150,255,0) 68%);mix-blend-mode:screen;animation:flare 5.5s ease-in-out infinite alternate}
+.rlm-flare{position:absolute;top:73.1%;left:50%;width:26%;aspect-ratio:9/1;transform:translate(-50%,-50%);background:radial-gradient(ellipse at center,rgba(255,255,255,.95) 0,rgba(150,200,255,.55) 22%,rgba(120,150,255,0) 68%);mix-blend-mode:screen;animation:flare 5.5s ease-in-out infinite alternate}
 @keyframes sheen{0%,35%{transform:translateX(-140%) skewX(-12deg)}75%,100%{transform:translateX(330%) skewX(-12deg)}}
-@keyframes flare{from{left:16%;opacity:.55}50%{opacity:1}to{left:84%;opacity:.55}}
+@keyframes flare{from{left:27%;opacity:.5}50%{opacity:1}to{left:71%;opacity:.5}}
 /* odd cast booth */
 .booth{position:relative;min-width:0}
 .cover-wrap{position:relative}
@@ -303,7 +308,7 @@ p.email{margin:0 0 1rem}
   .partner{flex-direction:column;align-items:flex-start}
   .hero .wrap{min-height:0;gap:0}
   .hero-text{padding:2.5rem 0 2rem}
-  .hero-wall{height:380px;min-height:0;margin-bottom:1.5rem}
+  .hero-wall{height:380px;min-height:0;margin:0 -1.5rem 1.5rem}
   .wall-plane{transform:rotateX(8deg) rotateY(-10deg) rotateZ(3deg) scale(1.18)}
   .founders{max-width:420px}
   .founders img{height:auto;min-height:0;flex:none;aspect-ratio:4/5;object-position:50% 30%}
@@ -359,7 +364,7 @@ p.email{margin:0 0 1rem}
           <a class="btn outline" href="#contact">Support our work</a>
         </div>
       </div>
-      <div class="hero-wall" aria-hidden="true"><div class="wall-plane"><div class="col"><div class="track"><img src="img/music-mic.webp" width="540" height="892" alt=""><img src="img/film-street.webp" width="960" height="514" alt=""><img src="img/sho-art.webp" width="1340" height="1174" alt=""><img src="img/party-five.webp" width="1055" height="1400" alt=""><img src="img/music-mic.webp" width="540" height="892" alt=""><img src="img/film-street.webp" width="960" height="514" alt=""><img src="img/sho-art.webp" width="1340" height="1174" alt=""><img src="img/party-five.webp" width="1055" height="1400" alt=""></div></div><div class="col"><div class="track"><img src="img/group-bw.webp" width="960" height="692" alt=""><img src="img/youth-mic.webp" width="640" height="960" alt=""><img src="img/oddcast-cover.webp" width="900" height="900" alt=""><img src="img/group-color.webp" width="960" height="710" alt=""><img src="img/group-bw.webp" width="960" height="692" alt=""><img src="img/youth-mic.webp" width="640" height="960" alt=""><img src="img/oddcast-cover.webp" width="900" height="900" alt=""><img src="img/group-color.webp" width="960" height="710" alt=""></div></div><div class="col"><div class="track"><img src="img/party-three.webp" width="888" height="1340" alt=""><img src="img/sho-flag.webp" width="1400" height="884" alt=""><img src="img/profile-capitol.webp" width="1050" height="1400" alt=""><img src="img/film-street.webp" width="960" height="514" alt=""><img src="img/group-bw.webp" width="960" height="692" alt=""><img src="img/party-three.webp" width="888" height="1340" alt=""><img src="img/sho-flag.webp" width="1400" height="884" alt=""><img src="img/profile-capitol.webp" width="1050" height="1400" alt=""><img src="img/film-street.webp" width="960" height="514" alt=""><img src="img/group-bw.webp" width="960" height="692" alt=""></div></div></div></div>
+      <div class="hero-wall" aria-hidden="true"><div class="wall-plane"><div class="col"><div class="track"><img src="img/music-mic.webp" width="540" height="892" alt=""><img src="img/film-street.webp" width="960" height="514" alt=""><img src="img/sho-art.webp" width="1340" height="1174" alt=""><img src="img/party-five.webp" width="1055" height="1400" alt=""><img src="img/music-mic.webp" width="540" height="892" alt=""><img src="img/film-street.webp" width="960" height="514" alt=""><img src="img/sho-art.webp" width="1340" height="1174" alt=""><img src="img/party-five.webp" width="1055" height="1400" alt=""></div></div><div class="col"><div class="track"><img src="img/group-bw.webp" width="960" height="692" alt=""><img src="img/youth-mic.webp" width="640" height="960" alt=""><img src="img/oddcast-cover.webp" width="900" height="900" alt=""><img src="img/group-color.webp" width="960" height="710" alt=""><img src="img/group-bw.webp" width="960" height="692" alt=""><img src="img/youth-mic.webp" width="640" height="960" alt=""><img src="img/oddcast-cover.webp" width="900" height="900" alt=""><img src="img/group-color.webp" width="960" height="710" alt=""></div></div><div class="col"><div class="track"><img src="img/party-three.webp" width="888" height="1340" alt=""><img src="img/sho-flag.webp" width="1400" height="884" alt=""><img src="img/profile-capitol.webp" width="1050" height="1400" alt=""><img src="img/film-street.webp" width="960" height="514" alt=""><img src="img/group-bw.webp" width="960" height="692" alt=""><img src="img/party-three.webp" width="888" height="1340" alt=""><img src="img/sho-flag.webp" width="1400" height="884" alt=""><img src="img/profile-capitol.webp" width="1050" height="1400" alt=""><img src="img/film-street.webp" width="960" height="514" alt=""><img src="img/group-bw.webp" width="960" height="692" alt=""></div></div></div><div class="col c4"><div class="track"><img src="img/oddcast-cover.webp" width="900" height="900" alt=""><img src="img/music-mic.webp" width="540" height="892" alt=""><img src="img/group-color.webp" width="960" height="710" alt=""><img src="img/sho-art.webp" width="1340" height="1174" alt=""><img src="img/youth-mic.webp" width="640" height="960" alt=""><img src="img/oddcast-cover.webp" width="900" height="900" alt=""><img src="img/music-mic.webp" width="540" height="892" alt=""><img src="img/group-color.webp" width="960" height="710" alt=""><img src="img/sho-art.webp" width="1340" height="1174" alt=""><img src="img/youth-mic.webp" width="640" height="960" alt=""></div></div></div>
     </div>
     <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>Documentary film</span><span>Music production</span><span>Music videos</span><span>Youth arts</span><span>Photography</span><span>Podcasts</span><span>History</span><span>Hemp building</span><span>Documentary film</span><span>Music production</span><span>Music videos</span><span>Youth arts</span><span>Photography</span><span>Podcasts</span><span>History</span><span>Hemp building</span></div></div>
   </section>
@@ -539,6 +544,7 @@ p.email{margin:0 0 1rem}
           <h3>Joel B. Holton</h3>
           <p class="role">Hemp building partner</p>
           <p>Founder and CEO of Gro Enterprises Inc. and Program Manager at Louisiana Green Corps in New Orleans. Joel is working with Fruition on bringing hemp building to Huntsville.</p>
+          <a class="btn light" href="https://www.gro-enterprises.com/" target="_blank" rel="noopener">Visit Gro Enterprises</a>
         </div>
       </div>
       <p class="source">Hempcrete facts adapted from &ldquo;Hempcrete: A Low Tech Solution to Help Advance the Human Race,&rdquo; Super Natural Structures newsletter, October 2, 2023.</p>
@@ -666,7 +672,7 @@ p.email{margin:0 0 1rem}
     const wipe='.featured-photo,.doc-art,.gallery figure,.founders,.programs li';
     const els=[...document.querySelectorAll(sel)];
     els.forEach(el=>{
-      el.classList.add('rv'); if(el.matches(wipe)) el.classList.add('wipe');
+      el.classList.add('rv');
       const sib=[...el.parentElement.children].filter(c=>c.matches(sel));
       el.style.setProperty('--d',Math.min(sib.indexOf(el),5)*90+'ms');
     });
