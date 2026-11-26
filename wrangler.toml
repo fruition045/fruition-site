@@ -1,0 +1,9 @@
+# Fruition public website: static files served by a Cloudflare Worker.
+# Deploy (after unzipping to your home folder):  cd ~/fruition-site && npx wrangler deploy
+name = "fruition-site"
+compatibility_date = "2026-11-01"
+
+[assets]
+directory = "./docs"
+html_handling = "auto-trailing-slash"
+not_found_handling = "404-page"
