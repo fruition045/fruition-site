@@ -206,6 +206,15 @@ a{color:inherit}
 .closing p{margin:0 0 1.1rem;max-width:42ch}
 .email{font-family:var(--display);font-weight:600;font-size:clamp(1.15rem,2vw,1.45rem);color:var(--fig);text-decoration-color:var(--pulp);text-decoration-thickness:2px;text-underline-offset:5px;word-break:break-word}
 .email:hover{color:var(--pulp)}
+p.email{margin:0 0 1rem}
+.topic{margin:0 0 1rem;font-size:1rem;color:var(--muted)}
+.topic strong{color:var(--fig)}
+.contact-actions{display:flex;flex-wrap:wrap;gap:.7rem}
+.btn.ghost{background:transparent;color:var(--fig);box-shadow:inset 0 0 0 2px var(--fig);border:0;cursor:pointer;font:inherit;font-family:var(--display);font-weight:600;font-size:1.05rem}
+.btn.ghost:hover{background:var(--fig);color:var(--paper)}
+.copied{min-height:1.4em;margin:.6rem 0 0;font-size:.95rem;color:var(--leaf)}
+#get-in-touch{scroll-margin-top:24px}
+#get-in-touch.flash h2{color:var(--pulp);transition:color .4s}
 
 /* footer */
 .site-foot{background:var(--fig);color:rgba(246,247,244,.8);padding:2.5rem 0;font-size:.98rem}
@@ -260,7 +269,7 @@ a{color:inherit}
       <div>
         <h1>Small businesses, seen through the arts.</h1>
         <p>Fruition is a Huntsville, Alabama nonprofit that helps small businesses get noticed with film, music, and creative production, priced on a sliding scale.</p>
-        <a class="btn" href="mailto:info@thefruitionfoundation.org?subject=Working%20with%20Fruition">Tell us about your business</a>
+        <a class="btn" href="#get-in-touch" data-topic="Working with Fruition">Tell us about your business</a>
       </div>
       <div class="hero-art">
         <img src="img/profile-capitol.webp" width="1050" height="1400" alt="Delarkin and Jade Foster walking hand in hand in Washington, D.C., with the U.S. Capitol behind them">
@@ -351,7 +360,7 @@ a{color:inherit}
         <h2 id="featured-h">Beautifully Broken</h2>
         <p>Fruition handled the media and photography for Beautifully Broken, an event with Tresha Williams held in Huntsville in July 2017.</p>
         <p>The portraits on this page are our photography from that event. This is the kind of work we do: help a client's story get seen.</p>
-        <a class="btn" href="mailto:info@thefruitionfoundation.org?subject=Media%20and%20photography">Ask about media and photography</a>
+        <a class="btn" href="#get-in-touch" data-topic="Media and photography">Ask about media and photography</a>
       </div>
     </div>
   </section>
@@ -466,10 +475,17 @@ a{color:inherit}
         <p>Fruition Charitable Arts Foundation and Services is a 501(c)(3) nonprofit private foundation. To give, sponsor a project, or partner with us, email us and we'll reply.</p>
         <p>Fruition is also the home of NCAIWPA, the National Council for AI Workforce Program Accreditation.</p>
       </div>
-      <div>
+      <div id="get-in-touch">
         <h2>Get in touch</h2>
         <p>Small business owners, artists, and partners: tell us what you're working on.</p>
-        <a class="email" href="mailto:info@thefruitionfoundation.org">info@thefruitionfoundation.org</a>
+        <p class="email">info@thefruitionfoundation.org</p>
+        <p class="topic" id="topic" hidden></p>
+        <div class="contact-actions">
+          <a class="btn" id="mail-app" href="mailto:info@thefruitionfoundation.org">Email us</a>
+          <a class="btn ghost" id="mail-gmail" href="https://mail.google.com/mail/?view=cm&amp;to=info@thefruitionfoundation.org" target="_blank" rel="noopener">Write in Gmail</a>
+          <button class="btn ghost" id="copy-email" type="button">Copy email address</button>
+        </div>
+        <p class="copied" id="copied" role="status" aria-live="polite"></p>
         <p style="margin-top:1.1rem">Huntsville, Alabama</p>
       </div>
     </div>
@@ -486,6 +502,27 @@ a{color:inherit}
   </div>
 </footer>
 
-<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+<script>
+{
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  const ADDR='info@thefruitionfoundation.org';
+  const app=document.getElementById('mail-app'), gm=document.getElementById('mail-gmail');
+  const topic=document.getElementById('topic'), copied=document.getElementById('copied'), box=document.getElementById('get-in-touch');
+  function setTopic(t){
+    const su=encodeURIComponent(t);
+    app.href='mailto:'+ADDR+'?subject='+su;
+    gm.href='https://mail.google.com/mail/?view=cm&to='+ADDR+'&su='+su;
+    topic.textContent='';
+    const s=document.createElement('strong'); s.textContent=t;
+    topic.append('Topic: ',s); topic.hidden=false;
+    box.classList.add('flash'); setTimeout(()=>box.classList.remove('flash'),1200);
+  }
+  document.querySelectorAll('[data-topic]').forEach(a=>a.addEventListener('click',()=>setTopic(a.dataset.topic)));
+  document.getElementById('copy-email').addEventListener('click',async()=>{
+    try{await navigator.clipboard.writeText(ADDR);copied.textContent='Copied. Paste it into any email app.';}
+    catch(e){copied.textContent='Copy this address: '+ADDR;}
+  });
+}
+</script>
 </body>
 </html>
