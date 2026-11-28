@@ -326,6 +326,46 @@ p.email{margin:0 0 1rem}
 @media (max-width:520px){
   .site-head nav{font-size:.93rem;gap:1.1rem}
 }
+
+/* Books: its own section */
+.books{padding:0 0 clamp(4.5rem,9vw,8rem)}
+.bk{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(1.8rem,5vw,4rem);align-items:center;background:#fff;border-radius:22px;padding:clamp(1.5rem,4vw,3rem);box-shadow:0 10px 40px rgba(14,39,68,.08)}
+.bk img{width:100%;height:auto;border-radius:6px;box-shadow:0 18px 40px rgba(0,0,0,.28)}
+.bk h3{font-family:var(--display);font-weight:720;font-size:clamp(1.5rem,2.6vw,2rem);line-height:1.12;letter-spacing:-.02em;color:var(--fig);margin:0 0 .3rem}
+.bk .by{font-family:var(--display);font-weight:500;color:var(--muted);margin:0 0 1.1rem}
+.bk p{max-width:46ch}
+/* S.H.O. apparel: its own black showroom section that leads into the store */
+.sho-sec{background:#000;color:#F2E8D4;padding:0 0 clamp(4rem,8vw,6.5rem)}
+.sho-sec .sho-banner img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.sho-intro{text-align:center;padding:clamp(2.5rem,5vw,4rem) 0;border-bottom:1px solid rgba(206,170,102,.25);margin-bottom:clamp(3rem,6vw,4.5rem)}
+.sho-intro h2{font-family:var(--display);font-weight:750;font-size:clamp(2.2rem,4.4vw,3.6rem);line-height:1;letter-spacing:-.035em;color:#F2E8D4;margin:0 0 1rem}
+.sho-intro p{max-width:38rem;margin:0 auto 2rem;color:rgba(242,232,212,.78)}
+.sho-btns{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center}
+.sho-sec .btn{background:#CEAA66;color:#111}
+.sho-sec .btn:hover{background:#F2E8D4}
+.sho-sec .btn.ghost{background:none;color:#F2E8D4;box-shadow:inset 0 0 0 1.5px rgba(242,232,212,.5)}
+.sho-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.5rem 2rem;margin:0 0 1.8rem}
+.sho-h h3{font-family:var(--display);font-weight:700;font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:-.02em;margin:0;color:#F2E8D4}
+.sho-h a{font-family:var(--display);font-weight:500;font-size:1rem;color:#CEAA66;text-decoration:none}
+.sho-h a:hover{text-decoration:underline}
+.sho-colls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1rem,2vw,1.5rem);margin-bottom:clamp(3.5rem,7vw,5rem)}
+.sc{display:block;text-decoration:none;color:#F2E8D4}
+.sc-img{overflow:hidden;border-radius:6px}
+.sc-img img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;transition:transform .6s ease}
+.sc:hover .sc-img img{transform:scale(1.03)}
+.sc span{display:block;padding:.9rem .1rem 0;font-family:var(--display);font-weight:600;font-size:1.15rem}
+.sc small{display:block;font-family:var(--text);font-weight:400;font-size:.98rem;color:rgba(242,232,212,.75)}
+.sho-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(1rem,2vw,1.6rem)}
+.si{text-decoration:none;color:#F2E8D4;display:flex;flex-direction:column;gap:.7rem}
+.si-img{background:#ECE8E1;border-radius:6px;aspect-ratio:4/5;overflow:hidden}
+.si-img img{display:block;width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;transition:transform .5s ease}
+.si:hover img{transform:scale(1.04)}
+.si h3{font-family:var(--display);font-weight:500;font-size:1.02rem;line-height:1.3;margin:0}
+.si p{margin:0;font-family:var(--display);font-size:.98rem;color:#CEAA66}
+.sho-all{text-align:center;margin-top:clamp(3rem,6vw,4.5rem)}
+@media (max-width:900px){.sho-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:700px){.bk{grid-template-columns:1fr}.bk img{max-width:240px}.sho-colls{grid-template-columns:1fr}.sho-sec .sho-banner img{aspect-ratio:1/1}}
+@media (prefers-reduced-motion:reduce){.sc-img img,.si-img img{transition:none}}
 </style>
 </head>
 <body>
@@ -345,7 +385,8 @@ p.email{margin:0 0 1rem}
       <a href="#events">Past events</a>
       <a href="#apps">Apps</a>
       <a href="#hemp">Hemp building</a>
-      <a href="/shop/">Shop</a>
+      <a href="#books">Books</a>
+      <a href="#shop">Shop</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -551,30 +592,53 @@ p.email{margin:0 0 1rem}
     </div>
   </section>
 
-  <section class="shop" id="shop" aria-labelledby="shop-h">
+  <section class="books" id="books" aria-labelledby="books-h">
     <div class="wrap">
       <div class="section-head">
-        <h2 id="shop-h">Shop</h2>
-        <p>Books and apparel from Fruition's work.</p>
+        <h2 id="books-h">Books</h2>
       </div>
-      <div class="shop-grid">
-        <article class="product book">
-          <img class="cover-img" src="img/beneath-the-arsenal-cover.webp" width="677" height="900" alt="Cover of Beneath the Arsenal: The Stolen Sanctuary of Mullins Flat, by J. DeLarkin Foster">
-          <div class="product-text">
-            <h3>Beneath the Arsenal: The Stolen Sanctuary of Mullins Flat</h3>
-            <p>The story of the Pond Beat and Mullins Flat communities, whose land was seized in 1941 for Redstone Arsenal, told by the family that lived it. A memoir of land, legacy, and return.</p>
-            <a class="btn" href="https://a.co/d/05TbS4M0" target="_blank" rel="noopener">Buy on Amazon</a>
-          </div>
-        </article>
-        <article class="product apparel">
-          <div class="cover sho"><img src="img/sho-flag.webp" width="1400" height="884" alt="S.H.O. logo, Est. 1999"></div>
-          <div class="product-text">
-            <h3>S.H.O. apparel</h3>
-            <p>Shirts, hats, and more from the Southern Hustlers Operation.</p>
-            <a class="btn" href="/shop/#sho">Shop S.H.O.</a>
-          </div>
-        </article>
+      <article class="bk">
+        <img src="img/beneath-the-arsenal-cover.webp" width="677" height="900" alt="Cover of Beneath the Arsenal: The Stolen Sanctuary of Mullins Flat, by J. DeLarkin Foster" loading="lazy">
+        <div>
+          <h3>Beneath the Arsenal: The Stolen Sanctuary of Mullins Flat</h3>
+          <p class="by">J. DeLarkin Foster</p>
+          <p>The story of the Pond Beat and Mullins Flat communities, whose land was seized in 1941 for Redstone Arsenal, told by the family that lived it. A memoir of land, legacy, and return.</p>
+          <a class="btn" href="https://a.co/d/05TbS4M0" target="_blank" rel="noopener">Buy on Amazon</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="sho-sec" id="shop" aria-labelledby="shop-h">
+    <div class="sho-banner"><img src="img/shop/sho-world.webp" width="2000" height="1125" alt="S.H.O. World: hoodies, tees, crewnecks, caps and bucket hats from the S.H.O. collection on a black display, with the Zellige hoodie in the center." loading="lazy"></div>
+    <div class="wrap">
+      <div class="sho-intro">
+        <h2 id="shop-h">S.H.O. apparel</h2>
+        <p>Southern Hustlers Operation apparel from Huntsville, Alabama, est. 1999. Four winter collections and the S.H.O. World originals.</p>
+        <div class="sho-btns">
+          <a class="btn" href="https://shop.thefruitionfoundation.org/">Shop all</a>
+          <a class="btn ghost" href="https://shop.thefruitionfoundation.org/collections/the-winter-collection">The Winter Collection</a>
+        </div>
       </div>
+      <div class="sho-h"><h3>The collections</h3><a href="https://shop.thefruitionfoundation.org/collections/the-winter-collection">See every winter piece</a></div>
+      <div class="sho-colls">
+        <a class="sc" href="https://shop.thefruitionfoundation.org/collections/rocket-city-hustlers"><div class="sc-img"><img src="img/shop/rocket-city-hustlers.webp" width="1200" height="675" alt="" loading="lazy"></div><span>Rocket City Hustlers<small>Old-school ball-club style in black, cream and red</small></span></a>
+        <a class="sc" href="https://shop.thefruitionfoundation.org/collections/s-h-o-athletic-dept"><div class="sc-img"><img src="img/shop/athletic-dept.webp" width="1200" height="675" alt="" loading="lazy"></div><span>S.H.O. Athletic Dept.<small>Team-issue warm-up style with the 045 plate</small></span></a>
+        <a class="sc" href="https://shop.thefruitionfoundation.org/collections/huntsvillionaire"><div class="sc-img"><img src="img/shop/huntsvillionaire.webp" width="1200" height="675" alt="" loading="lazy"></div><span>Huntsvillionaire<small>The wordmark and the S.H.O. crest</small></span></a>
+        <a class="sc" href="https://shop.thefruitionfoundation.org/collections/santa-boss"><div class="sc-img"><img src="img/shop/santa-boss.webp" width="1200" height="675" alt="" loading="lazy"></div><span>Santa Boss<small>The S.H.O. holiday drop</small></span></a>
+      </div>
+      <div class="sho-h"><h3>Featured pieces</h3><a href="https://shop.thefruitionfoundation.org/collections/s-h-o">All S.H.O. World originals</a></div>
+      <div class="sho-grid">
+        <a class="si" href="https://shop.thefruitionfoundation.org/products/s-h-o-zellige-oversized-hoodie"><div class="si-img"><img src="https://cdn.fourthwall.com/offer/sh_26b2c83e-94dd-401f-aa9d-bd66aa28b427/34b7ae90-75da-40c1-8178-05729563f954.jpeg" alt="S.H.O. Zellige Oversized Hoodie" loading="lazy"></div><h3>S.H.O. Zellige Oversized Hoodie</h3><p>$110</p></a>
+        <a class="si" href="https://shop.thefruitionfoundation.org/products/s-h-o-gold-hoodie"><div class="si-img"><img src="https://cdn.fourthwall.com/offer/sh_26b2c83e-94dd-401f-aa9d-bd66aa28b427/33460aa1-ecd6-4111-9ba3-fefd40fc7952.webp" alt="S.H.O. Gold Hoodie" loading="lazy"></div><h3>S.H.O. Gold Hoodie</h3><p>From $41</p></a>
+        <a class="si" href="https://shop.thefruitionfoundation.org/products/rocket-city-hustlers-patch-hoodie"><div class="si-img"><img src="https://cdn.fourthwall.com/customizations/sh_26b2c83e-94dd-401f-aa9d-bd66aa28b427/7b9dd15f-9cf1-4852-921b-74da9c01fe8f.webp" alt="Rocket City Hustlers Patch Hoodie" loading="lazy"></div><h3>Rocket City Hustlers Patch Hoodie</h3><p>From $59</p></a>
+        <a class="si" href="https://shop.thefruitionfoundation.org/products/s-h-o-athletic-dept-patch-tee"><div class="si-img"><img src="https://cdn.fourthwall.com/customizations/sh_26b2c83e-94dd-401f-aa9d-bd66aa28b427/0c00cbc4-bae3-4b49-b1f0-5fd5d95416e4.webp" alt="S.H.O. Athletic Dept. Patch Tee" loading="lazy"></div><h3>S.H.O. Athletic Dept. Patch Tee</h3><p>From $36</p></a>
+        <a class="si" href="https://shop.thefruitionfoundation.org/products/huntsvillionaire-members-club-tee"><div class="si-img"><img src="https://cdn.fourthwall.com/customizations/sh_26b2c83e-94dd-401f-aa9d-bd66aa28b427/3d197722-a159-4e0b-9ab9-3f9ca64bb7a1.webp" alt="Huntsvillionaire Members Club Tee" loading="lazy"></div><h3>Huntsvillionaire Members Club Tee</h3><p>From $36</p></a>
+        <a class="si" href="https://shop.thefruitionfoundation.org/products/santa-boss-crewneck"><div class="si-img"><img src="https://cdn.fourthwall.com/customizations/sh_26b2c83e-94dd-401f-aa9d-bd66aa28b427/1a4f750f-ad34-4e53-9d11-b90d1c132d2d.webp" alt="Santa Boss Crewneck" loading="lazy"></div><h3>Santa Boss Crewneck</h3><p>From $45</p></a>
+        <a class="si" href="https://shop.thefruitionfoundation.org/products/s-h-o-diamond-skyline-tee"><div class="si-img"><img src="https://cdn.fourthwall.com/offer/sh_26b2c83e-94dd-401f-aa9d-bd66aa28b427/a6d5865b-ae7c-494e-9307-728536e6a58a.webp" alt="S.H.O. Diamond Skyline Tee" loading="lazy"></div><h3>S.H.O. Diamond Skyline Tee</h3><p>From $26</p></a>
+        <a class="si" href="https://shop.thefruitionfoundation.org/products/s-h-o-zellige-all-over-hoodie"><div class="si-img"><img src="https://cdn.fourthwall.com/offer/sh_26b2c83e-94dd-401f-aa9d-bd66aa28b427/a20515f1-5982-487c-b65a-abb743c901b4.jpeg" alt="S.H.O. Zellige All-Over Hoodie" loading="lazy"></div><h3>S.H.O. Zellige All-Over Hoodie</h3><p>$90</p></a>
+      </div>
+      <div class="sho-all"><a class="btn" href="https://shop.thefruitionfoundation.org/">Shop all S.H.O.</a></div>
     </div>
   </section>
 
